@@ -12,7 +12,7 @@ void work(void) {
     /* starting task cheduler */
     vTaskStartScheduler();
 }
-
+/* stack overflow hook function */
 void vApplicationStackOverflowHook( xTaskHandle pxTask, signed char *pcTaskName )
 {
     /* This function will get called if a task overflows its stack.   If the
@@ -24,8 +24,8 @@ void vApplicationStackOverflowHook( xTaskHandle pxTask, signed char *pcTaskName 
 
     for( ;; );
 }
-/*-----------------------------------------------------------*/
 
+/* compiler needed functions */
 void assert_failed( unsigned char *pucFile, unsigned long ulLine )
 {
     ( void ) pucFile;

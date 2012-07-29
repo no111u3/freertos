@@ -6,7 +6,6 @@
 #* 2012
 #*-----------------------------------------------------------------------------
 # Compilator prefix
-#CROSS_PREFIX=arm-softfloat-linux-gnueabi-
 CROSS_PREFIX=arm-none-eabi-
 # Compilators and utils
 CC=$(CROSS_PREFIX)gcc
