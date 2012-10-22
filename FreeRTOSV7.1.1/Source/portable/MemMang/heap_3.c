@@ -93,7 +93,6 @@ task.h is included from an application file. */
 void *pvPortMalloc( size_t xWantedSize )
 {
 void *pvReturn;
-
 	vTaskSuspendAll();
 	{
 		pvReturn = malloc( xWantedSize );

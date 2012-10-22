@@ -96,13 +96,12 @@ static union xRTOS_HEAP
 	unsigned char ucHeap[ configTOTAL_HEAP_SIZE ];
 } xHeap;
 
-static size_t xNextFreeByte = ( size_t ) 0;
+/*static*/ size_t xNextFreeByte = ( size_t ) 0;
 /*-----------------------------------------------------------*/
 
 void *pvPortMalloc( size_t xWantedSize )
 {
 void *pvReturn = NULL; 
-
 	/* Ensure that blocks are always aligned to the required number of bytes. */
 	#if portBYTE_ALIGNMENT != 1
 		if( xWantedSize & portBYTE_ALIGNMENT_MASK )
@@ -116,7 +115,7 @@ void *pvReturn = NULL;
 	{
 		/* Check there is enough room left for the allocation. */
 		if( ( ( xNextFreeByte + xWantedSize ) < configTOTAL_HEAP_SIZE ) &&
-			( ( xNextFreeByte + xWantedSize ) > xNextFreeByte )	)/* Check for overflow. */
+			( ( xNextFreeByte + xWantedSize ) > xNextFreeByte ))/* Check for overflow. */
 		{
 			/* Return the next free byte then increment the index past this
 			block. */
@@ -134,8 +133,7 @@ void *pvReturn = NULL;
 			vApplicationMallocFailedHook();
 		}
 	}
-	#endif	
-
+	#endif
 	return pvReturn;
 }
 /*-----------------------------------------------------------*/

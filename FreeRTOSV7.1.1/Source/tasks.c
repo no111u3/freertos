@@ -404,7 +404,7 @@ tskTCB * pxNewTCB;
 	/* Allocate the memory required by the TCB and stack for the new task,
 	checking that the allocation was successful. */
 	pxNewTCB = prvAllocateTCBAndStack( usStackDepth, puxStackBuffer );
-
+    
 	if( pxNewTCB != NULL )
 	{
 		portSTACK_TYPE *pxTopOfStack;
@@ -535,7 +535,7 @@ tskTCB * pxNewTCB;
 	}
 	else
 	{
-		xReturn = errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY;
+        xReturn = errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY;
 		traceTASK_CREATE_FAILED();
 	}
 
@@ -1057,7 +1057,6 @@ tskTCB * pxNewTCB;
 void vTaskStartScheduler( void )
 {
 portBASE_TYPE xReturn;
-
 	/* Add the idle task at the lowest priority. */
 	#if ( INCLUDE_xTaskGetIdleTaskHandle == 1 )
 	{
@@ -1080,7 +1079,7 @@ portBASE_TYPE xReturn;
 		}
 	}
 	#endif
-
+	
 	if( xReturn == pdPASS )
 	{
 		/* Interrupts are turned off here, to ensure a tick does not occur

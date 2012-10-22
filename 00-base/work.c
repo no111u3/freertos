@@ -11,7 +11,10 @@
 void work(void) {
     /* starting task cheduler */
     vTaskStartScheduler();
+    /* infinity loop if failed starting */
+    while (1);
 }
+
 /* stack overflow hook function */
 void vApplicationStackOverflowHook( xTaskHandle pxTask, signed char *pcTaskName )
 {
@@ -34,7 +37,7 @@ void assert_failed( unsigned char *pucFile, unsigned long ulLine )
     for( ;; );
 }
 
-unsigned int_sbrk_r( struct _reent *r,  int incr ) {
+unsigned _sbrk( struct _reent *r,  int incr ) {
     
     (void)r;
     (void)incr;
